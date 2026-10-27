@@ -104,7 +104,7 @@ $env:JAVA_HOME="C:\Users\tbell\Documents\OfflineDuoScoreboard\tools\jdk\jdk-21.0
 ## 4. 검증 결과
 
 - 빌드: `clean build` 성공 (AGP 8.13.2 / Gradle 8.14.3 / Kotlin 2.2.21 / JDK 21)
-- 테스트: 103개 전부 통과
+- 테스트: 104개 전부 통과
   - `ScoreboardViewModelTest` (19) 점수 증감·하한 0·상한 999·초기화·저장·빈 경기 거부·음성 이벤트·세트 획득·동점 거부·목표 점수 자동 세트·듀스·감점 시 세트 미부여
   - `MatchRecordTest` (5) 승자 판정
   - `MatchRecordDaoTest` (5) Room 저장/정렬/개별 삭제/전체 삭제/세트 왕복

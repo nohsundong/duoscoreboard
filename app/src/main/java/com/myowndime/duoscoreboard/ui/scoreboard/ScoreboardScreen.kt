@@ -2,12 +2,12 @@ package com.myowndime.duoscoreboard.ui.scoreboard
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.only
@@ -48,6 +48,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -93,6 +94,15 @@ fun ScoreboardScreen(
             showFinishDialog = true
         }
     }
+
+    val windowSize = LocalWindowInfo.current.containerSize
+    val isLandscape = windowSize.width >= windowSize.height
+
+    val swapLabel = stringResource(R.string.quick_swap_sides)
+    val setScoreLabel = stringResource(R.string.quick_set_score)
+    val resetLabel = stringResource(R.string.quick_reset)
+    val openSetScore = { showSetScoreDialog = true }
+    val openReset = { showResetDialog = true }
 
     val shareCurrentScore = if (state.showSets) {
         stringResource(
@@ -206,30 +216,34 @@ fun ScoreboardScreen(
                         ),
                     ),
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                ) {
-                    QuickAction(
-                        icon = SwapHorizIcon,
-                        label = stringResource(R.string.quick_swap_sides),
-                        onClick = onSwapSides,
-                        modifier = Modifier.testTag(ScoreboardTestTags.SWAP_ACTION),
-                    )
-                    QuickAction(
-                        icon = Icons.Filled.Edit,
-                        label = stringResource(R.string.quick_set_score),
-                        onClick = { showSetScoreDialog = true },
-                        modifier = Modifier.testTag(ScoreboardTestTags.SET_SCORE_ACTION),
-                    )
-                    QuickAction(
-                        icon = Icons.Filled.Refresh,
-                        label = stringResource(R.string.quick_reset),
-                        onClick = { showResetDialog = true },
-                        modifier = Modifier.testTag(ScoreboardTestTags.RESET_ACTION),
-                    )
+                // In landscape the screen is short but wide, so the actions move to a
+                // rail between the panels instead of eating into the panels' height.
+                if (!isLandscape) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 8.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                    ) {
+                        QuickAction(
+                            icon = SwapHorizIcon,
+                            label = swapLabel,
+                            onClick = onSwapSides,
+                            modifier = Modifier.testTag(ScoreboardTestTags.SWAP_ACTION),
+                        )
+                        QuickAction(
+                            icon = Icons.Filled.Edit,
+                            label = setScoreLabel,
+                            onClick = openSetScore,
+                            modifier = Modifier.testTag(ScoreboardTestTags.SET_SCORE_ACTION),
+                        )
+                        QuickAction(
+                            icon = Icons.Filled.Refresh,
+                            label = resetLabel,
+                            onClick = openReset,
+                            modifier = Modifier.testTag(ScoreboardTestTags.RESET_ACTION),
+                        )
+                    }
                 }
                 Text(
                     text = stringResource(R.string.hint_gesture),
@@ -261,7 +275,7 @@ fun ScoreboardScreen(
                     swapped = state.sidesSwapped,
                 )
             }
-            BoxWithConstraints(
+            Box(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
@@ -301,13 +315,21 @@ fun ScoreboardScreen(
                 val firstPanel = if (state.sidesSwapped) panelTwo else panelOne
                 val secondPanel = if (state.sidesSwapped) panelOne else panelTwo
 
-                if (maxWidth >= maxHeight) {
+                if (isLandscape) {
                     Row(
                         modifier = Modifier.fillMaxSize(),
                         horizontalArrangement = Arrangement.spacedBy(panelSpacing),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         firstPanel(Modifier.weight(1f).fillMaxSize())
+                        QuickActionRail(
+                            swapLabel = swapLabel,
+                            setScoreLabel = setScoreLabel,
+                            resetLabel = resetLabel,
+                            onSwapSides = onSwapSides,
+                            onSetScore = openSetScore,
+                            onReset = openReset,
+                        )
                         secondPanel(Modifier.weight(1f).fillMaxSize())
                     }
                 } else {
@@ -379,6 +401,43 @@ fun ScoreboardScreen(
                 if (swapped) onSetScores(second, first) else onSetScores(first, second)
             },
             onDismiss = { showSetScoreDialog = false },
+        )
+    }
+}
+
+/** Landscape variant of the bottom action row: icon-only buttons stacked between the panels. */
+@Composable
+private fun QuickActionRail(
+    swapLabel: String,
+    setScoreLabel: String,
+    resetLabel: String,
+    onSwapSides: () -> Unit,
+    onSetScore: () -> Unit,
+    onReset: () -> Unit,
+) {
+    Column(
+        modifier = Modifier.fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        RailButton(SwapHorizIcon, swapLabel, onSwapSides, ScoreboardTestTags.SWAP_ACTION)
+        RailButton(Icons.Filled.Edit, setScoreLabel, onSetScore, ScoreboardTestTags.SET_SCORE_ACTION)
+        RailButton(Icons.Filled.Refresh, resetLabel, onReset, ScoreboardTestTags.RESET_ACTION)
+    }
+}
+
+@Composable
+private fun RailButton(
+    icon: ImageVector,
+    label: String,
+    onClick: () -> Unit,
+    tag: String,
+) {
+    IconButton(onClick = onClick, modifier = Modifier.testTag(tag)) {
+        Icon(
+            imageVector = icon,
+            contentDescription = label,
+            tint = MaterialTheme.colorScheme.primary,
         )
     }
 }

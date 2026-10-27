@@ -279,6 +279,26 @@ class ScoreboardScreenTest {
     }
 
     @Test
+    fun landscapeKeepsAllThreeActionsInARailBetweenThePanels() {
+        RuntimeEnvironment.setQualifiers("+w800dp-h400dp-land")
+        setContent()
+
+        composeRule.onNodeWithTag(ScoreboardTestTags.SWAP_ACTION).assertIsDisplayed()
+        composeRule.onNodeWithTag(ScoreboardTestTags.SET_SCORE_ACTION).assertIsDisplayed()
+        composeRule.onNodeWithTag(ScoreboardTestTags.RESET_ACTION).assertIsDisplayed()
+
+        composeRule.onNodeWithTag(ScoreboardTestTags.SWAP_ACTION).performClick()
+        composeRule.waitForIdle()
+        assertEquals(1, swapCount)
+
+        composeRule.onNodeWithTag(ScoreboardTestTags.RESET_ACTION).performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithText("Confirm").performClick()
+        composeRule.waitForIdle()
+        assertEquals(1, resetCount)
+    }
+
+    @Test
     fun swappedStateDrawsPlayerTwoBeforePlayerOne() {
         swapped = true
         setContent()
