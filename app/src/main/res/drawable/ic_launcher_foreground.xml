@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Left player panel -->
+    <path
+        android:fillColor="#FF64B5F6"
+        android:pathData="M26,32 L48,32 A4,4 0 0 1 52,36 L52,72 A4,4 0 0 1 48,76 L26,76 A4,4 0 0 1 22,72 L22,36 A4,4 0 0 1 26,32 Z" />
+    <!-- Right player panel -->
+    <path
+        android:fillColor="#FFEF5350"
+        android:pathData="M60,32 L82,32 A4,4 0 0 1 86,36 L86,72 A4,4 0 0 1 82,76 L60,76 A4,4 0 0 1 56,72 L56,36 A4,4 0 0 1 60,32 Z" />
+    <!-- Score separator -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M54,44 m-2.6,0 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M54,64 m-2.6,0 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0 Z" />
+</vector>

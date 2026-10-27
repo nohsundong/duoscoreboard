@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">듀오 스코어보드</string>
+
+    <!-- Scoreboard -->
+    <string name="action_finish_set">세트 종료</string>
+    <string name="action_save_match">경기 종료 후 저장</string>
+    <string name="sets_label">세트 %1$d</string>
+    <string name="quick_swap_sides">좌우교대</string>
+    <string name="quick_set_score">점수 설정</string>
+    <string name="quick_reset">리셋</string>
+    <string name="dialog_set_score_title">점수 직접 설정</string>
+    <string name="dialog_set_score_message">각 플레이어의 현재 점수를 입력하세요. 세트 수는 바뀌지 않습니다.</string>
+    <string name="dialog_set_score_range">0 ~ 999</string>
+    <string name="settings_pad_score">점수를 000 형식으로 표시</string>
+    <string name="settings_pad_score_hint">모든 점수를 세 자리로 맞춥니다. 예: 7 대신 007</string>
+    <string name="set_status_manual_label">세트 현황</string>
+    <string name="set_status_description">세트 현황: %1$s %2$d세트, %3$s %4$d세트. %5$s.</string>
+    <string name="action_history">경기 기록</string>
+    <string name="action_settings">설정</string>
+    <string name="action_back">뒤로</string>
+    <string name="action_more">더보기</string>
+    <string name="action_share">공유</string>
+    <string name="share_chooser_title">경기 결과 공유</string>
+    <string name="share_current_score">%1$s: %2$d\n%3$s: %4$d</string>
+    <string name="share_current_sets">%1$s — 세트 %2$d, 점수 %3$d\n%4$s — 세트 %5$d, 점수 %6$d</string>
+    <string name="share_match_result">%1$s: %2$d\n%3$s: %4$d\n%5$s</string>
+    <string name="share_match_result_sets">%1$s — 세트 %2$d\n%3$s — 세트 %4$d\n%5$s</string>
+    <plurals name="announce_score">
+        <item quantity="other">%1$s, %2$d점</item>
+    </plurals>
+    <string name="action_increment">%1$s 점수 1점 올리기</string>
+    <string name="action_decrement">%1$s 점수 1점 내리기</string>
+    <plurals name="player_panel_description">
+        <item quantity="other">%1$s, %2$d점. 탭하면 1점 추가, 길게 누르거나 아래로 밀면 1점 감소.</item>
+    </plurals>
+    <string name="hint_gesture">탭 +1 · 길게 누르기 또는 아래로 밀기 -1</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_reset_title">점수와 세트를 초기화할까요?</string>
+    <string name="dialog_reset_message">두 사람의 점수와 세트 수가 모두 0으로 돌아갑니다. 저장된 경기 기록은 지워지지 않습니다.</string>
+    <string name="dialog_finish_set_title">이 세트를 종료할까요?</string>
+    <string name="dialog_finish_set_message">앞서고 있는 쪽이 세트를 가져갑니다. 두 점수는 0으로 돌아가고 세트 수가 1 올라갑니다.</string>
+    <string name="dialog_save_title">이 경기를 종료할까요?</string>
+    <string name="dialog_save_message">현재 점수를 경기 기록에 저장하고 점수판을 초기화합니다.</string>
+    <string name="dialog_match_won_title">%1$s 경기 승리! 저장할까요?</string>
+    <string name="dialog_delete_all_title">모든 경기 기록을 삭제할까요?</string>
+    <string name="dialog_delete_all_message">이 기기에 저장된 경기 기록이 모두 삭제되며 되돌릴 수 없습니다.</string>
+    <string name="dialog_delete_one_title">이 경기 기록을 삭제할까요?</string>
+    <string name="dialog_delete_one_message">이 기기에 저장된 해당 경기 기록이 삭제되며 되돌릴 수 없습니다.</string>
+    <string name="dialog_confirm">확인</string>
+    <string name="dialog_cancel">취소</string>
+
+    <!-- First-run setup -->
+    <string name="first_run_title">경기 규칙을 설정해주세요</string>
+    <string name="first_run_message">몇 세트를 먼저 이겨야 경기가 끝나는지, 한 세트가 몇 점 만점인지, 듀스를 쓸지 정해주세요. 설정 화면에서 언제든 다시 바꿀 수 있습니다.</string>
+    <string name="first_run_start">시작하기</string>
+
+    <!-- Messages -->
+    <string name="message_match_saved">경기 기록을 저장했습니다</string>
+    <string name="message_match_empty">1점 이상 기록한 뒤 저장할 수 있습니다</string>
+    <string name="message_set_tied">동점에서는 세트를 종료할 수 없습니다</string>
+
+    <!-- History -->
+    <string name="history_title">경기 기록</string>
+    <string name="history_empty">아직 저장된 경기가 없습니다.\n경기를 종료하면 여기에 표시됩니다.</string>
+    <string name="history_action_delete_all">전체 삭제</string>
+    <string name="history_action_delete">경기 기록 삭제</string>
+    <string name="history_winner">승자: %1$s</string>
+    <string name="history_draw">무승부</string>
+    <string name="history_score">%1$s %2$d : %3$d %4$s</string>
+    <string name="history_sets">세트 %1$d : %2$d</string>
+
+    <!-- Settings -->
+    <string name="settings_title">설정</string>
+    <string name="settings_player_one">플레이어 1</string>
+    <string name="settings_player_two">플레이어 2</string>
+    <string name="settings_name_label">이름</string>
+    <string name="settings_color_label">패널 색상</string>
+    <string name="settings_color_option">%1$s 색상</string>
+    <string name="settings_match_format">경기 승리 세트 수</string>
+    <string name="settings_match_format_hint">지정한 세트 수를 먼저 딴 쪽이 나오면 경기 저장을 제안합니다. 수동을 선택하면 직접 경기 종료 버튼을 누를 때까지 세트가 계속됩니다.</string>
+    <string name="settings_match_format_manual">수동</string>
+    <string name="settings_match_format_single">단판(1세트)</string>
+    <plurals name="settings_match_format_best_of">
+        <item quantity="other">%1$d전 %2$d선승제</item>
+    </plurals>
+    <string name="settings_set_target">세트 목표 점수</string>
+    <string name="settings_set_target_hint">목표 점수를 정하면 그 점수에 먼저 도달한 쪽이 세트를 가져가고 자동으로 다음 세트가 시작됩니다. 수동을 선택하면 세트 버튼을 누를 때까지 계속 진행됩니다.</string>
+    <string name="settings_set_target_manual">수동</string>
+    <string name="settings_deuce">듀스</string>
+    <string name="settings_deuce_hint">목표 점수에서 세트를 이기려면 2점 차가 나야 합니다(예: 11:10에서는 계속 진행, 12:10에서 세트 종료). 위의 세트 목표 점수를 설정했을 때만 적용됩니다.</string>
+    <string name="settings_theme">테마</string>
+    <string name="settings_theme_system">시스템</string>
+    <string name="settings_theme_light">라이트</string>
+    <string name="settings_theme_dark">다크</string>
+    <string name="settings_keep_screen_on">점수 기록 중 화면 켜 두기</string>
+    <string name="settings_speak_scores">점수 음성 안내</string>
+    <string name="settings_speak_scores_hint">기기에 설치된 음성 엔진을 사용합니다. 외부로 전송되는 정보는 없습니다.</string>
+    <string name="settings_privacy_title">개인정보</string>
+    <string name="settings_privacy_body">이 앱은 어떤 안드로이드 권한도 요청하지 않고, 인터넷에 접속하지 않으며, 개인정보를 수집하지 않습니다. 이름·색상·경기 기록은 기기 안에만 저장되며 앱을 삭제하면 함께 사라집니다.</string>
+
+    <!-- Colors offered in settings -->
+    <string name="color_blue">파랑</string>
+    <string name="color_red">빨강</string>
+    <string name="color_green">초록</string>
+    <string name="color_amber">노랑</string>
+    <string name="color_purple">보라</string>
+    <string name="color_teal">청록</string>
+    <string name="color_orange">주황</string>
+    <string name="color_slate">회색</string>
+
+    <string name="default_player_one_name">플레이어 1</string>
+    <string name="default_player_two_name">플레이어 2</string>
+</resources>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Duo Scoreboard</string>
+
+    <!-- Scoreboard -->
+    <string name="action_finish_set">Finish set</string>
+    <string name="action_save_match">Finish and save match</string>
+    <string name="sets_label">Sets %1$d</string>
+    <string name="quick_swap_sides">Swap sides</string>
+    <string name="quick_set_score">Set score</string>
+    <string name="quick_reset">Reset</string>
+    <string name="dialog_set_score_title">Set score</string>
+    <string name="dialog_set_score_message">Type each player\'s current score. Set counts are not changed.</string>
+    <string name="dialog_set_score_range">0 to 999</string>
+    <string name="settings_pad_score">Show scores as 000</string>
+    <string name="settings_pad_score_hint">Pads every score to three digits, e.g. 007 instead of 7.</string>
+    <string name="set_status_manual_label">Set score</string>
+    <string name="set_status_description">Set score: %1$s %2$d, %3$s %4$d. %5$s.</string>
+    <string name="action_history">Match history</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_back">Back</string>
+    <string name="action_more">More options</string>
+    <string name="action_share">Share</string>
+    <string name="share_chooser_title">Share result</string>
+    <!-- One line per player: default names end in a digit, so a single "A 2 : 1 B"
+         line makes it hard to see where the name ends and the score starts. -->
+    <string name="share_current_score">%1$s: %2$d\n%3$s: %4$d</string>
+    <string name="share_current_sets">%1$s — sets %2$d, points %3$d\n%4$s — sets %5$d, points %6$d</string>
+    <string name="share_match_result">%1$s: %2$d\n%3$s: %4$d\n%5$s</string>
+    <string name="share_match_result_sets">%1$s — sets %2$d\n%3$s — sets %4$d\n%5$s</string>
+    <plurals name="announce_score">
+        <item quantity="one">%1$s, %2$d point</item>
+        <item quantity="other">%1$s, %2$d points</item>
+    </plurals>
+    <string name="action_increment">Add one point to %1$s</string>
+    <string name="action_decrement">Subtract one point from %1$s</string>
+    <plurals name="player_panel_description">
+        <item quantity="one">%1$s, %2$d point. Tap to add a point, long press or swipe down to subtract.</item>
+        <item quantity="other">%1$s, %2$d points. Tap to add a point, long press or swipe down to subtract.</item>
+    </plurals>
+    <string name="hint_gesture">Tap +1 · Long press or swipe down -1</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_reset_title">Reset scores and sets?</string>
+    <string name="dialog_reset_message">Both scores and both set counts go back to 0. This does not delete saved matches.</string>
+    <string name="dialog_finish_set_title">Finish this set?</string>
+    <string name="dialog_finish_set_message">The player in the lead wins the set. Both scores go back to 0 and the set counter goes up.</string>
+    <string name="dialog_save_title">Finish this match?</string>
+    <string name="dialog_save_message">The current score is saved to the match history and the board is reset.</string>
+    <string name="dialog_match_won_title">%1$s won the match! Save it?</string>
+    <string name="dialog_delete_all_title">Delete all matches?</string>
+    <string name="dialog_delete_all_message">Every saved match is removed from this device. This cannot be undone.</string>
+    <string name="dialog_delete_one_title">Delete this match?</string>
+    <string name="dialog_delete_one_message">This match is removed from the history on this device. This cannot be undone.</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_cancel">Cancel</string>
+
+    <!-- First-run setup -->
+    <string name="first_run_title">Set up match rules</string>
+    <string name="first_run_message">Choose how many sets win the match, how many points win a set, and whether deuce applies. You can change these anytime in Settings.</string>
+    <string name="first_run_start">Start scoring</string>
+
+    <!-- Messages -->
+    <string name="message_match_saved">Match saved</string>
+    <string name="message_match_empty">Score at least one point before saving</string>
+    <string name="message_set_tied">A set cannot end on a tie</string>
+
+    <!-- History -->
+    <string name="history_title">Match history</string>
+    <string name="history_empty">No matches saved yet.\nFinish a match to see it here.</string>
+    <string name="history_action_delete_all">Delete all</string>
+    <string name="history_action_delete">Delete match</string>
+    <string name="history_winner">Winner: %1$s</string>
+    <string name="history_draw">Draw</string>
+    <string name="history_score">%1$s %2$d : %3$d %4$s</string>
+    <string name="history_sets">Sets %1$d : %2$d</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_player_one">Player 1</string>
+    <string name="settings_player_two">Player 2</string>
+    <string name="settings_name_label">Name</string>
+    <string name="settings_color_label">Panel color</string>
+    <string name="settings_color_option">Color %1$s</string>
+    <string name="settings_match_format">Sets to win the match</string>
+    <string name="settings_match_format_hint">Once a player reaches this many sets, the app offers to save the match. Manual keeps playing sets until you press the finish-match button yourself.</string>
+    <string name="settings_match_format_manual">Manual</string>
+    <string name="settings_match_format_single">Single set</string>
+    <plurals name="settings_match_format_best_of">
+        <item quantity="other">Best of %1$d (first to %2$d)</item>
+    </plurals>
+    <string name="settings_set_target">Points that win a set</string>
+    <string name="settings_set_target_hint">With a target, a set ends automatically once someone reaches it. Manual keeps the set running until you press the set button.</string>
+    <string name="settings_set_target_manual">Manual</string>
+    <string name="settings_deuce">Deuce</string>
+    <string name="settings_deuce_hint">Requires a two point lead to win a set at the target score (e.g. 11:10 keeps going, 12:10 wins). Only applies with a points target set above.</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_keep_screen_on">Keep screen on while scoring</string>
+    <string name="settings_speak_scores">Announce scores out loud</string>
+    <string name="settings_speak_scores_hint">Uses the speech engine already installed on this device. Nothing is sent anywhere.</string>
+    <string name="settings_privacy_title">Privacy</string>
+    <string name="settings_privacy_body">This app requests no Android permissions, has no internet access and collects no personal data. Names, colors and match history stay on this device and are deleted when the app is uninstalled.</string>
+
+    <!-- Colors offered in settings -->
+    <string name="color_blue">blue</string>
+    <string name="color_red">red</string>
+    <string name="color_green">green</string>
+    <string name="color_amber">amber</string>
+    <string name="color_purple">purple</string>
+    <string name="color_teal">teal</string>
+    <string name="color_orange">orange</string>
+    <string name="color_slate">slate</string>
+
+    <string name="default_player_one_name">Player 1</string>
+    <string name="default_player_two_name">Player 2</string>
+</resources>
