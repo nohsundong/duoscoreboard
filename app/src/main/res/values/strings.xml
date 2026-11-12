@@ -94,6 +94,16 @@
     <string name="settings_set_target_manual">Manual</string>
     <string name="settings_deuce">Deuce</string>
     <string name="settings_deuce_hint">Requires a two point lead to win a set at the target score (e.g. 11:10 keeps going, 12:10 wins). Only applies with a points target set above.</string>
+    <string name="settings_timer">Timer</string>
+    <string name="settings_timer_hint">Shows a timer at the bottom of the scoreboard.</string>
+    <string name="settings_timer_stopwatch">Stopwatch</string>
+    <string name="settings_timer_countdown">Countdown</string>
+    <string name="settings_timer_minutes">Countdown length</string>
+    <string name="settings_timer_minutes_option">%1$d min</string>
+    <string name="timer_start">Start</string>
+    <string name="timer_pause">Pause</string>
+    <string name="timer_reset">Reset timer</string>
+    <string name="timer_time_up">Time\'s up</string>
     <string name="settings_theme">Theme</string>
     <string name="settings_theme_system">System</string>
     <string name="settings_theme_light">Light</string>

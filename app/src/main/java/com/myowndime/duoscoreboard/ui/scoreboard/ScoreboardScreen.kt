@@ -216,6 +216,12 @@ fun ScoreboardScreen(
                         ),
                     ),
             ) {
+                if (state.settings.timerEnabled) {
+                    TimerBar(
+                        countdown = state.settings.timerCountdown,
+                        countdownMinutes = state.settings.timerMinutes,
+                    )
+                }
                 // In landscape the screen is short but wide, so the actions move to a
                 // rail between the panels instead of eating into the panels' height.
                 if (!isLandscape) {

@@ -45,6 +45,12 @@ data class AppSettings(
     val hasCompletedFirstRunSetup: Boolean = false,
     /** Shows scores zero-padded to three digits (007, 000) instead of plain numbers. */
     val padScoreDigits: Boolean = false,
+    /** Shows the timer row at the bottom of the scoreboard. */
+    val timerEnabled: Boolean = true,
+    /** True counts down from [timerMinutes]; false is a stopwatch counting up. */
+    val timerCountdown: Boolean = false,
+    /** Starting length of the countdown, in minutes. */
+    val timerMinutes: Int = DEFAULT_TIMER_MINUTES,
 ) {
     fun profileOf(player: Player): PlayerProfile = when (player) {
         Player.ONE -> playerOne
@@ -55,6 +61,11 @@ data class AppSettings(
         const val DEFAULT_PLAYER_ONE_COLOR: Long = 0xFF1565C0
         const val DEFAULT_PLAYER_TWO_COLOR: Long = 0xFFC62828
         const val MAX_NAME_LENGTH: Int = 16
+
+        const val DEFAULT_TIMER_MINUTES: Int = 10
+
+        /** Countdown lengths offered in settings, in minutes. */
+        val TIMER_MINUTE_OPTIONS: List<Int> = listOf(1, 3, 5, 10, 15, 20, 30, 45, 60)
 
         /** Sets are ended with the button instead of by a point target. */
         const val SET_TARGET_MANUAL: Int = 0

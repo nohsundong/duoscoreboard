@@ -25,6 +25,7 @@ class SettingsScreenTest {
     private var lastDeuce: Boolean? = null
     private var lastTheme: ThemeMode? = null
     private var lastPad: Boolean? = null
+    private var lastTimerMinutes: Int? = null
 
     private fun setContent() {
         composeRule.setContent {
@@ -40,6 +41,9 @@ class SettingsScreenTest {
                     onDeuceChange = { lastDeuce = it },
                     onMatchFormatChange = { lastMatchFormat = it },
                     onPadScoreDigitsChange = { lastPad = it },
+                    onTimerEnabledChange = {},
+                    onTimerCountdownChange = {},
+                    onTimerMinutesChange = { lastTimerMinutes = it },
                     onBack = {},
                 )
             }
@@ -54,6 +58,17 @@ class SettingsScreenTest {
         composeRule.waitForIdle()
 
         assertEquals(5, lastMatchFormat)
+    }
+
+    @Test
+    fun choosingACountdownLengthReportsIt() {
+        settings = AppSettings(timerCountdown = true)
+        setContent()
+
+        composeRule.onNodeWithTag(SettingsTestTags.timerMinutes(5)).performScrollTo().performClick()
+        composeRule.waitForIdle()
+
+        assertEquals(5, lastTimerMinutes)
     }
 
     @Test

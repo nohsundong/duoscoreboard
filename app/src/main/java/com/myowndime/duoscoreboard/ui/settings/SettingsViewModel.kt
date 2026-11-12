@@ -60,4 +60,16 @@ class SettingsViewModel(
     fun setPadScoreDigits(enabled: Boolean) {
         viewModelScope.launch { settingsRepository.setPadScoreDigits(enabled) }
     }
+
+    fun setTimerEnabled(enabled: Boolean) {
+        viewModelScope.launch { settingsRepository.setTimerEnabled(enabled) }
+    }
+
+    fun setTimerCountdown(countdown: Boolean) {
+        viewModelScope.launch { settingsRepository.setTimerCountdown(countdown) }
+    }
+
+    fun setTimerMinutes(minutes: Int) {
+        viewModelScope.launch { settingsRepository.setTimerMinutes(minutes) }
+    }
 }

@@ -33,4 +33,11 @@ interface SettingsRepository {
 
     /** Whether scores are shown zero-padded to three digits (000). */
     suspend fun setPadScoreDigits(enabled: Boolean)
+
+    suspend fun setTimerEnabled(enabled: Boolean)
+
+    /** True for a countdown from the configured minutes, false for a stopwatch. */
+    suspend fun setTimerCountdown(countdown: Boolean)
+
+    suspend fun setTimerMinutes(minutes: Int)
 }

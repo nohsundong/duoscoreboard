@@ -114,6 +114,29 @@ class DataStoreSettingsRepository(
         }
     }
 
+    override suspend fun setTimerEnabled(enabled: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[Keys.TIMER_ENABLED] = enabled
+        }
+    }
+
+    override suspend fun setTimerCountdown(countdown: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[Keys.TIMER_COUNTDOWN] = countdown
+        }
+    }
+
+    override suspend fun setTimerMinutes(minutes: Int) {
+        val allowed = if (minutes in AppSettings.TIMER_MINUTE_OPTIONS) {
+            minutes
+        } else {
+            AppSettings.DEFAULT_TIMER_MINUTES
+        }
+        dataStore.edit { preferences ->
+            preferences[Keys.TIMER_MINUTES] = allowed
+        }
+    }
+
     private object Keys {
         val PLAYER_ONE_NAME = stringPreferencesKey("player_one_name")
         val PLAYER_TWO_NAME = stringPreferencesKey("player_two_name")
@@ -127,6 +150,9 @@ class DataStoreSettingsRepository(
         val MATCH_FORMAT_SETS = intPreferencesKey("match_format_sets")
         val FIRST_RUN_SETUP_DONE = booleanPreferencesKey("first_run_setup_done")
         val PAD_SCORE_DIGITS = booleanPreferencesKey("pad_score_digits")
+        val TIMER_ENABLED = booleanPreferencesKey("timer_enabled")
+        val TIMER_COUNTDOWN = booleanPreferencesKey("timer_countdown")
+        val TIMER_MINUTES = intPreferencesKey("timer_minutes")
     }
 
     private fun nameKey(player: Player) = when (player) {
@@ -165,6 +191,11 @@ class DataStoreSettingsRepository(
             hasCompletedFirstRunSetup = this[Keys.FIRST_RUN_SETUP_DONE]
                 ?: defaults.hasCompletedFirstRunSetup,
             padScoreDigits = this[Keys.PAD_SCORE_DIGITS] ?: defaults.padScoreDigits,
+            timerEnabled = this[Keys.TIMER_ENABLED] ?: defaults.timerEnabled,
+            timerCountdown = this[Keys.TIMER_COUNTDOWN] ?: defaults.timerCountdown,
+            timerMinutes = this[Keys.TIMER_MINUTES]
+                ?.takeIf { it in AppSettings.TIMER_MINUTE_OPTIONS }
+                ?: defaults.timerMinutes,
         )
     }
 }

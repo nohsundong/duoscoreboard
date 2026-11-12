@@ -14,6 +14,9 @@ object ScoreboardTestTags {
     const val OVERFLOW_ACTION: String = "action_overflow"
     const val SHARE_ACTION: String = "action_share"
     const val SETTINGS_ACTION: String = "action_settings"
+    const val TIMER_DISPLAY: String = "timer_display"
+    const val TIMER_TOGGLE: String = "timer_toggle"
+    const val TIMER_RESET: String = "timer_reset"
 
     fun panel(player: Player): String = "panel_${player.name}"
 

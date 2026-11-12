@@ -58,6 +58,11 @@ object SettingsTestTags {
     const val SPEAK_SCORES: String = "settings_speak_scores"
     const val DEUCE_ENABLED: String = "settings_deuce_enabled"
     const val PAD_SCORE_DIGITS: String = "settings_pad_score_digits"
+    const val TIMER_ENABLED: String = "settings_timer_enabled"
+    const val TIMER_COUNTDOWN: String = "settings_timer_countdown"
+    const val TIMER_STOPWATCH: String = "settings_timer_stopwatch"
+
+    fun timerMinutes(minutes: Int): String = "settings_timer_minutes_$minutes"
 
     fun nameField(player: Player): String = "settings_name_${player.name}"
 
@@ -81,6 +86,9 @@ fun SettingsScreen(
     onDeuceChange: (Boolean) -> Unit,
     onMatchFormatChange: (Int) -> Unit,
     onPadScoreDigitsChange: (Boolean) -> Unit,
+    onTimerEnabledChange: (Boolean) -> Unit,
+    onTimerCountdownChange: (Boolean) -> Unit,
+    onTimerMinutesChange: (Int) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -132,6 +140,15 @@ fun SettingsScreen(
                 onMatchFormatChange = onMatchFormatChange,
                 onSetTargetChange = onSetTargetChange,
                 onDeuceChange = onDeuceChange,
+            )
+
+            TimerSection(
+                enabled = settings.timerEnabled,
+                countdown = settings.timerCountdown,
+                minutes = settings.timerMinutes,
+                onEnabledChange = onTimerEnabledChange,
+                onCountdownChange = onTimerCountdownChange,
+                onMinutesChange = onTimerMinutesChange,
             )
 
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -243,6 +260,85 @@ fun SettingsScreen(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
+private fun TimerSection(
+    enabled: Boolean,
+    countdown: Boolean,
+    minutes: Int,
+    onEnabledChange: (Boolean) -> Unit,
+    onCountdownChange: (Boolean) -> Unit,
+    onMinutesChange: (Int) -> Unit,
+) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.settings_timer),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+                Text(
+                    text = stringResource(R.string.settings_timer_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Switch(
+                checked = enabled,
+                onCheckedChange = onEnabledChange,
+                modifier = Modifier.testTag(SettingsTestTags.TIMER_ENABLED),
+            )
+        }
+        if (enabled) {
+            Row(
+                modifier = Modifier.selectableGroup(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                FilterChip(
+                    selected = !countdown,
+                    onClick = { onCountdownChange(false) },
+                    label = { Text(stringResource(R.string.settings_timer_stopwatch)) },
+                    modifier = Modifier.testTag(SettingsTestTags.TIMER_STOPWATCH),
+                )
+                FilterChip(
+                    selected = countdown,
+                    onClick = { onCountdownChange(true) },
+                    label = { Text(stringResource(R.string.settings_timer_countdown)) },
+                    modifier = Modifier.testTag(SettingsTestTags.TIMER_COUNTDOWN),
+                )
+            }
+            if (countdown) {
+                Text(
+                    text = stringResource(R.string.settings_timer_minutes),
+                    style = MaterialTheme.typography.labelLarge,
+                )
+                FlowRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .selectableGroup(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    AppSettings.TIMER_MINUTE_OPTIONS.forEach { option ->
+                        FilterChip(
+                            selected = minutes == option,
+                            onClick = { onMinutesChange(option) },
+                            label = {
+                                Text(stringResource(R.string.settings_timer_minutes_option, option))
+                            },
+                            modifier = Modifier.testTag(SettingsTestTags.timerMinutes(option)),
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
 private fun PlayerSection(
     title: String,
     player: Player,
@@ -332,6 +428,9 @@ private fun SettingsScreenPreview() {
             onDeuceChange = {},
             onMatchFormatChange = {},
             onPadScoreDigitsChange = {},
+            onTimerEnabledChange = {},
+            onTimerCountdownChange = {},
+            onTimerMinutesChange = {},
             onBack = {},
         )
     }

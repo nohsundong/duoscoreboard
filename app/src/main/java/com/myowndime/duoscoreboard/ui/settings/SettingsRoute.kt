@@ -24,6 +24,9 @@ fun SettingsRoute(
         onDeuceChange = viewModel::setDeuceEnabled,
         onMatchFormatChange = viewModel::setMatchFormatSets,
         onPadScoreDigitsChange = viewModel::setPadScoreDigits,
+        onTimerEnabledChange = viewModel::setTimerEnabled,
+        onTimerCountdownChange = viewModel::setTimerCountdown,
+        onTimerMinutesChange = viewModel::setTimerMinutes,
         onBack = onBack,
     )
 }

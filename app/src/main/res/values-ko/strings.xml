@@ -90,6 +90,16 @@
     <string name="settings_set_target_manual">수동</string>
     <string name="settings_deuce">듀스</string>
     <string name="settings_deuce_hint">목표 점수에서 세트를 이기려면 2점 차가 나야 합니다(예: 11:10에서는 계속 진행, 12:10에서 세트 종료). 위의 세트 목표 점수를 설정했을 때만 적용됩니다.</string>
+    <string name="settings_timer">타이머</string>
+    <string name="settings_timer_hint">점수판 하단에 타이머를 표시합니다.</string>
+    <string name="settings_timer_stopwatch">스톱워치</string>
+    <string name="settings_timer_countdown">카운트다운</string>
+    <string name="settings_timer_minutes">카운트다운 시간</string>
+    <string name="settings_timer_minutes_option">%1$d분</string>
+    <string name="timer_start">시작</string>
+    <string name="timer_pause">일시정지</string>
+    <string name="timer_reset">타이머 초기화</string>
+    <string name="timer_time_up">시간 종료</string>
     <string name="settings_theme">테마</string>
     <string name="settings_theme_system">시스템</string>
     <string name="settings_theme_light">라이트</string>

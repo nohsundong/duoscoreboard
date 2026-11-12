@@ -73,6 +73,18 @@ class FakeSettingsRepository(
     override suspend fun setPadScoreDigits(enabled: Boolean) {
         state.value = state.value.copy(padScoreDigits = enabled)
     }
+
+    override suspend fun setTimerEnabled(enabled: Boolean) {
+        state.value = state.value.copy(timerEnabled = enabled)
+    }
+
+    override suspend fun setTimerCountdown(countdown: Boolean) {
+        state.value = state.value.copy(timerCountdown = countdown)
+    }
+
+    override suspend fun setTimerMinutes(minutes: Int) {
+        state.value = state.value.copy(timerMinutes = minutes)
+    }
 }
 
 class FakeMatchRepository : MatchRepository {
